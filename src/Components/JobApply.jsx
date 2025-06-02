@@ -4,8 +4,9 @@ import {Link, useParams} from 'react-router';
 import axios from 'axios';
 
 const JobApply = () => {
-    const {saveUser} = use(AuthCotext)
     const {id: jobId} = useParams()
+    const {saveUser} = use(AuthCotext)
+
     const formJobApply = e => {
         e.preventDefault()
         const form = e.target
@@ -14,11 +15,14 @@ const JobApply = () => {
         const resume = form.resume.value;
 
         const application = {
+            jobId,
             applicant: saveUser.email,
             linkedIn,
             github,
             resume
         }
+
+        console.log(application)
 
         axios.post('http://localhost:3000/applications', application)
             .then(res => {
