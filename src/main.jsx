@@ -1,21 +1,21 @@
 import { createRoot } from 'react-dom/client'
-import {
-    createBrowserRouter,
-    RouterProvider,
-} from "react-router";
 import './index.css'
-import Root from './Layouts/Root.jsx';
+import {BrowserRouter} from 'react-router';
+import AppRoutes from './Router/AppRoutes.jsx';
+import AuthProvider from './Contexts/AuthProvider.jsx';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
-const router = createBrowserRouter([
-    {
-        path: "/",
-        Component: Root,
-        children: []
-    },
-]);
-
+const queryClient = new QueryClient();
 createRoot(document.getElementById('root')).render(
+    <QueryClientProvider client={queryClient}>
 
-    <RouterProvider router={router} />
-  
+    <AuthProvider>
+     <BrowserRouter>
+        <AppRoutes />
+     </BrowserRouter>
+
+    </AuthProvider>
+    </QueryClientProvider>
+
+
 )
