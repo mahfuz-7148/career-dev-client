@@ -22,6 +22,8 @@ const Navbar = () => {
         {
             saveUser && <>
                 <li><NavLink className="btn" to="/myApplications">My Applications</NavLink></li>
+                <li><NavLink className="btn" to="/addJob">Add Job</NavLink></li>
+                <li><NavLink className="btn" to="/myPostedJobs">My Posted Job</NavLink></li>
             </>
         }
 
